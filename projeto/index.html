@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Notas</title>
+  <!-- CSS externo: apresentação -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <h1>Controle de Notas</h1>
+    <!-- Botão de tema: classList.toggle + localStorage (Atividade 3 da aula 11) -->
+    <button type="button" id="btnTema">Modo escuro</button>
+  </header>
+
+  <main>
+    <!-- ========== FORMULÁRIO DE CADASTRO ========== -->
+    <section class="cartao">
+      <h2 id="tituloForm">Cadastrar aluno</h2>
+
+      <!--
+        novalidate: desliga a validação automática do navegador
+        para que a NOSSA validação em JavaScript seja executada.
+      -->
+      <form id="formAluno" novalidate>
+        <label for="nome">Nome do aluno</label>
+        <input type="text" id="nome" placeholder="Ex.: Ana Souza" maxlength="40">
+        <small id="contador">0/40 caracteres</small>
+
+        <div class="linha-notas">
+          <div>
+            <label for="nota1">Nota 1</label>
+            <input type="number" id="nota1" step="0.1" placeholder="0 a 10">
+          </div>
+          <div>
+            <label for="nota2">Nota 2</label>
+            <input type="number" id="nota2" step="0.1" placeholder="0 a 10">
+          </div>
+          <div>
+            <label for="nota3">Nota 3</label>
+            <input type="number" id="nota3" step="0.1" placeholder="0 a 10">
+          </div>
+        </div>
+
+        <div class="botoes">
+          <button type="submit" id="btnSalvar">Cadastrar</button>
+          <button type="button" id="btnCancelar" class="secundario oculto">Cancelar edição</button>
+        </div>
+      </form>
+
+      <!-- Mensagens de erro/sucesso escritas pelo JavaScript -->
+      <p id="mensagem" class="mensagem" aria-live="polite"></p>
+    </section>
+
+    <!-- ========== RESUMO DA TURMA ========== -->
+    <section class="cartao">
+      <h2>Resumo da turma</h2>
+      <ul class="resumo">
+        <li>Alunos: <strong id="totalAlunos">0</strong></li>
+        <li>Média da turma: <strong id="mediaTurma">-</strong></li>
+        <li>Melhor média: <strong id="melhorAluno">-</strong></li>
+      </ul>
+    </section>
+
+    <!-- ========== LISTA DE ALUNOS ========== -->
+    <section class="cartao">
+      <h2>Alunos cadastrados</h2>
+
+      <div class="filtros">
+        <input type="text" id="busca" placeholder="Buscar pelo nome...">
+        <select id="filtro">
+          <option value="todos">Todas as situações</option>
+          <option value="Aprovado">Aprovado</option>
+          <option value="Recuperação">Recuperação</option>
+          <option value="Reprovado">Reprovado</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>N1</th>
+            <th>N2</th>
+            <th>N3</th>
+            <th>Média</th>
+            <th>Situação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <!-- As linhas são criadas pelo JavaScript -->
+        <tbody id="corpoTabela"></tbody>
+      </table>
+
+      <button type="button" id="btnLimparTudo" class="perigo">Apagar todos os alunos</button>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Projeto de estudo: HTML + CSS + JavaScript puro, com dados salvos no localStorage.</p>
+  </footer>
+
+  <!-- JS no final do body: quando ele roda, todos os elementos acima já existem no DOM -->
+  <script src="script.js"></script>
+</body>
+</html>

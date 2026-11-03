@@ -1,0 +1,237 @@
+/* ===== Cores em variáveis (facilita o modo escuro) ===== */
+:root {
+  --fundo: #f3f4f6;
+  --cartao: #ffffff;
+  --texto: #1f2937;
+  --borda: #d1d5db;
+  --primaria: #2563eb;
+  --verde: #15803d;
+  --amarelo: #a16207;
+  --vermelho: #b91c1c;
+}
+
+/* Classe adicionada/removida no <body> pelo JavaScript (classList.toggle) */
+body.escuro {
+  --fundo: #111827;
+  --cartao: #1f2937;
+  --texto: #f3f4f6;
+  --borda: #374151;
+  --verde: #4ade80;
+  --amarelo: #facc15;
+  --vermelho: #f87171;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+/* ===== Layout ===== */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--primaria);
+  color: #fff;
+}
+
+.cabecalho h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+main {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.cartao {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.cartao h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.rodape {
+  text-align: center;
+  font-size: 13px;
+  padding-bottom: 24px;
+}
+
+/* ===== Formulário ===== */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid var(--borda);
+  border-radius: 4px;
+  background: var(--cartao);
+  color: var(--texto);
+  font-size: 15px;
+}
+
+.linha-notas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.botoes {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  background: var(--primaria);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button.secundario {
+  background: #6b7280;
+}
+
+button.perigo {
+  background: var(--vermelho);
+  margin-top: 12px;
+}
+
+/* Formulário em modo de edição (classe colocada pelo JS) */
+form.editando {
+  border-left: 4px solid var(--amarelo);
+  padding-left: 12px;
+}
+
+/* ===== Mensagens ===== */
+.mensagem {
+  min-height: 20px;
+  font-weight: bold;
+}
+
+.mensagem.erro {
+  color: var(--vermelho);
+}
+
+.mensagem.sucesso {
+  color: var(--verde);
+}
+
+/* Campo com erro (classe colocada pelo JS na validação) */
+input.invalido {
+  border: 2px solid var(--vermelho);
+}
+
+/* ===== Resumo ===== */
+.resumo {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* ===== Filtros e tabela ===== */
+.filtros {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid var(--borda);
+  text-align: left;
+}
+
+td button {
+  padding: 4px 8px;
+  margin-right: 4px;
+  font-size: 13px;
+}
+
+tr.em-edicao {
+  background: rgba(250, 204, 21, 0.2);
+}
+
+td.vazio {
+  text-align: center;
+  font-style: italic;
+}
+
+/* Etiquetas de situação: a classe é escolhida pelo JS */
+.etiqueta {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.aprovado {
+  color: var(--verde);
+  border: 1px solid var(--verde);
+}
+
+.recuperacao {
+  color: var(--amarelo);
+  border: 1px solid var(--amarelo);
+}
+
+.reprovado {
+  color: var(--vermelho);
+  border: 1px solid var(--vermelho);
+}
+
+/* Mesma ideia da classe .oculta da aula 10 */
+.oculto {
+  display: none;
+}
+
+/* ===== Telas pequenas ===== */
+@media (max-width: 600px) {
+  .linha-notas,
+  .filtros {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  table {
+    font-size: 13px;
+  }
+}
